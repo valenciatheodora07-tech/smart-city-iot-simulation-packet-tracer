@@ -16,7 +16,6 @@ This repository contains the technical documentation, microcontroller (MCU) code
   - [3. Smart Home & Smart Grid](#3-smart-home--smart-grid)
 - [Custom Prototype: Smart Chair](#-custom-prototype-smart-chair)
 - [Subsystem Verification Summary](#-subsystem-verification-summary)
-- [Author](#-author)
 
 ---
 
