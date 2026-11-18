@@ -114,10 +114,3 @@ To extend the city's event-driven IoT ecosystem, a standalone **Smart Chair** pr
 | **Smart Traffic** | Move paramedic truck toward and past the intersection | Emergency lane signal switches to green upon approach and reverts to normal cycling after exit. |
 | **Smart Home** | Trigger elevated smoke levels (`Alt + Click` on Smoke Sensor) | `Smart Fan`, `Smart Door`, `Smart Window`, and `Garage Door` automatically open and activate. |
 | **Smart Grid** | Move `Sun` directly overhead `Solar-Cells` | Solar power output scales dynamically up to `160 W` and updates live on `Power IoT Server` (`100.2.0.2`). |
-
----
-
-## 👩‍💻 Author
-* **Name:** Valencia Theodora
-* **GitHub:** [github.com/valenciatheodora07-tech](https://github.com/valenciatheodora07-tech)
-* **Focus:** Network Infrastructure & Internet of Things (IoT) Simulation
