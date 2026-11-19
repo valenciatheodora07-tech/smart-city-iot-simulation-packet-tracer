@@ -4,6 +4,12 @@ Simulation and architectural analysis of an Internet of Things (IoT)-based Smart
 
 This repository contains the technical documentation, microcontroller (MCU) code analysis, and network simulation of an **Internet of Things (IoT)-based Smart City** built in **Cisco Packet Tracer**. The project demonstrates how sensors, actuators, microcontrollers, Metropolitan Area Network (MAN) links, and cloud/local servers integrate to execute real-time, event-driven automation across urban subsystems.
 
+![Smart City](images/smart-city.png)
+![Smart Home](images/smart-home.png)
+![Smart Parking](images/smart-parking.png)
+![City Offices](images/city-offices.png)
+![Smart Traffic](images/smart-traffic.png)
+
 ---
 
 ## 📋 Table of Contents
@@ -47,6 +53,8 @@ The simulated Smart City operates as a **Metropolitan Area Network (MAN)** inter
 
 ---
 
+![ISP Cloud](images/isp-cloud.png)
+
 ## 🧩 IoT Component Layers
 
 The simulation architecture is organized into **5 functional layers** (relying on `PT-MCU` units and built-in IoT modules rather than dedicated Single Board Computers):
@@ -64,7 +72,13 @@ The simulation architecture is organized into **5 functional layers** (relying o
 ### 1. Smart Parking
 This cluster implements a dual-interface monitoring architecture for city administrators and commuters:
 * **Administrator Dashboard (`195.0.0.2`):** Accessed via `City-IT-Laptop` (`Park` / `Park`). When parking slot `P-Space-1` is vacant, `Metal Detection` reads `0`; when a vehicle is placed on the slot, the sensor value changes to `20` (*occupied*).
+  
+![City-IT-Laptop](images/city-it-laptop.png)
+
 * **Citizen Web Portal (`10.10.10.10`):** Accessed via a `Smartphone` web browser connecting directly to the **Embedded HTTP Server** hosted on the `PT-MCU` (Port `80`).
+  
+![Smartphone0](images/smartphone0.png)
+
 * **MCU Script Mechanism (`main.js`):**
   * Polls 5 metal sensors on digital pins `0` through `4` using `digitalRead()` every 5 seconds (`delay(5000)`).
   * Dynamically renders the **City Parking Manager** HTML interface (green `#00ff00` for *free*, red `#ff0000` for *taken*) with a client-side auto-refresh script running every 1 second (`1000 ms`).
@@ -78,6 +92,8 @@ This subsystem automates right-of-way intersection clearance for emergency vehic
   * **Geofencing Logic:**
     * When `450 < x < 1010`: Calls `freeTheRoad()`, switching `tln_1` to Red (`0`) and `tlw_1` to Green (`2`).
     * Outside this coordinate range: Calls `backToNormal()` to restore standard traffic signal cycling.
+      
+![Smart Traffic Emergency Override](images/smart-traffic-emergency-override.png)
 
 ### 3. Smart Home & Smart Grid
 * **Smart Home:** The residential MCU continuously monitors the `Smoke Detector`. When smoke levels exceed the safety threshold (`> 10`), the controller activates the `Smart Fan` (speed `2`) and opens the `Smart Door`, `Smart Window`, and `Garage Door` for emergency ventilation.
@@ -95,6 +111,10 @@ To extend the city's event-driven IoT ecosystem, a standalone **Smart Chair** pr
 | **Microcontroller** | `MCU Smart Chair` (`PT-MCU`) | — | Standalone JavaScript processing unit operating locally without external cloud dependencies |
 | **Load Sensor** | `Smart Chair` (`Flex Sensor`) | Analog Pin `A0` | Reads bend resistance values (`0–1023`) via `analogRead(A0)` |
 | **Display Output** | `LCD Smart Chair` (`LCD 16x2`) | Digital Pin `D1` → LCD Port `D0` | Displays occupancy status (`EMPTY`/`OCCUPIED`) and estimated weight via `customWrite()` |
+
+![Smart Chair Weight 0](images/smart-chair-weight-0)
+![Smart Chair Weight 81](images/smart-chair-weight-81)
+![Logic Flowchart](images/logic-flowchart.png)
 
 ### Program Logic Flow (`MCU Smart Chair`)
 1. Configures digital pin `D1` as `OUTPUT` and initializes the LCD display with `Sts: EMPTY | Weight: 0 kg`.
